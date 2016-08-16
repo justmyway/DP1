@@ -1,4 +1,5 @@
-﻿using System;
+﻿using logic_board.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,19 +14,24 @@ namespace logic_board
 {
     public partial class Application : Form
     {
+
+        Board circuit;
+        BoardReader reader;
+
         public Application()
         {
             InitializeComponent();
+            circuit = new Board();
+            reader = new BoardReader();
         }
 
         private void Application_Load(object sender, EventArgs e)
         {
-
+            addLogLine("--- application started ---");
         }
 
         private void buttonOpenFile_Click(object sender, EventArgs e)
         {
-
             openFileDialog.Title = "Open een logisch circuit";
             openFileDialog.Filter = "Text Files (.txt)|*.txt|Circuits (.cir)|*.cir";
 
@@ -38,10 +44,13 @@ namespace logic_board
                     textBoxBoardFormat.Text = readedFile.ReadToEnd();
 
                     readedFile.Dispose();
+
+                    addLogLine("\"" + openFileDialog.SafeFileName + "\" is loaded");
                 }
             }
             catch (Exception ex)
             {
+                addErrorLogLine(ex.Message);
                 MessageBox.Show(ex.Message, "Opening File", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
@@ -50,8 +59,8 @@ namespace logic_board
         private void buttonSaveFile_Click(object sender, EventArgs e)
         {
 
-            openFileDialog.Title = "Save een logisch circuit";
-            openFileDialog.Filter = "Text Files (.txt)|*.txt|Circuits (.cir)|*.cir";
+            saveFileDialog.Title = "Save een logisch circuit";
+            saveFileDialog.Filter = "Text Files (.txt)|*.txt|Circuits (.cir)|*.cir";
 
             try
             {
@@ -60,11 +69,57 @@ namespace logic_board
                     StreamWriter sw = new StreamWriter(File.Create(saveFileDialog.FileName));
                     sw.Write(textBoxBoardFormat.Text);
                     sw.Dispose();
+
+                    addLogLine("\"" + saveFileDialog.FileName + "\" is saved");
                 }
             }
             catch (Exception ex)
             {
+                addErrorLogLine(ex.Message);
                 MessageBox.Show(ex.Message, "Saving File", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void addNewLogLine(String newLine) {
+            if (textBoxLog.Text.Length == 0)
+            {
+                textBoxLog.AppendText(newLine);
+            }
+            else
+            {
+                textBoxLog.AppendText(Environment.NewLine + newLine);
+                textBoxLog.SelectionStart = textBoxLog.Text.Length;
+                textBoxLog.ScrollToCaret();
+            }   
+        }
+
+        public void addLogLine(String newLine) {
+            addNewLogLine(newLine);
+        }
+
+        public void addMultipleLogLine(String[] newLine) {
+            foreach (String line in newLine)
+                addNewLogLine(line);
+        }
+
+        public void addErrorLogLine(String newLine)
+        {
+            addNewLogLine("A error occurred:");
+            addNewLogLine("-> " + newLine);
+        }
+
+        private void buttonRunFile_Click(object sender, EventArgs e)
+        {
+            if (textBoxBoardFormat.Text.Length == 0) {
+                addErrorLogLine("No circuit to run.");
+            }
+            else
+            {
+                addLogLine("--- start to process circuit ---");
+
+                reader.read(textBoxBoardFormat.Text);
+
+                //circuit.generateNew(textBoxBoardFormat.Text);
             }
         }
     }

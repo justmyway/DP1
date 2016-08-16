@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBoxLog = new System.Windows.Forms.TextBox();
             this.buttonRunFile = new System.Windows.Forms.Button();
             this.textBoxBoardFormat = new System.Windows.Forms.TextBox();
             this.labelFileName = new System.Windows.Forms.Label();
@@ -59,6 +61,8 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.label1);
+            this.splitContainer1.Panel2.Controls.Add(this.textBoxLog);
             this.splitContainer1.Panel2.Controls.Add(this.buttonRunFile);
             this.splitContainer1.Panel2.Controls.Add(this.textBoxBoardFormat);
             this.splitContainer1.Panel2.Controls.Add(this.labelFileName);
@@ -72,6 +76,25 @@
             this.splitContainer1.SplitterDistance = 456;
             this.splitContainer1.TabIndex = 0;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.Window;
+            this.label1.Location = new System.Drawing.Point(1107, 6);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(49, 13);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Logboek";
+            // 
+            // textBoxLog
+            // 
+            this.textBoxLog.Location = new System.Drawing.Point(739, 3);
+            this.textBoxLog.Multiline = true;
+            this.textBoxLog.Name = "textBoxLog";
+            this.textBoxLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBoxLog.Size = new System.Drawing.Size(440, 193);
+            this.textBoxLog.TabIndex = 6;
+            // 
             // buttonRunFile
             // 
             this.buttonRunFile.Location = new System.Drawing.Point(477, 97);
@@ -80,6 +103,7 @@
             this.buttonRunFile.TabIndex = 5;
             this.buttonRunFile.Text = "Run File";
             this.buttonRunFile.UseVisualStyleBackColor = true;
+            this.buttonRunFile.Click += new System.EventHandler(this.buttonRunFile_Click);
             // 
             // textBoxBoardFormat
             // 
@@ -154,6 +178,8 @@
         private System.Windows.Forms.Button buttonRunFile;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBoxLog;
     }
 }
 
