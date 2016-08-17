@@ -108,6 +108,12 @@ namespace logic_board
             addNewLogLine("-> " + newLine);
         }
 
+        public void addMultipleErrorLogLine(String[] newLines) {
+            addNewLogLine("A error occurred:");
+            foreach (String newLine in newLines)
+                addNewLogLine("-> " + newLine);
+        }
+
         private void buttonRunFile_Click(object sender, EventArgs e)
         {
             if (textBoxBoardFormat.Text.Length == 0) {
