@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace logic_board.Model
 {
-    class Input
+    class Input : Node
     {
+        public override Node getNewInitial()
+        {
+            return new Input();
+        }
     }
 }

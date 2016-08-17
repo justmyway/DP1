@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace logic_board.Model.Components
+namespace logic_board.Model
 {
-    class Not : Component
+    class Probe : Node
     {
         public override Node getNewInitial()
         {
-            return new Not();
+            return new Probe();
         }
     }
 }

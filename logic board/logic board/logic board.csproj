@@ -61,6 +61,7 @@
     <Compile Include="Model\Components\Not.cs" />
     <Compile Include="Model\Components\Or.cs" />
     <Compile Include="Model\Input.cs" />
+    <Compile Include="Model\Probe.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Application.resx">

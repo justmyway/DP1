@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace logic_board.Model.Components
 {
-    class And : Node
+    class And : Component
     {
+        public override Node getNewInitial()
+        {
+            return new And();
+        }
     }
 }

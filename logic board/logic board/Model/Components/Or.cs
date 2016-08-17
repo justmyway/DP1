@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace logic_board.Model.Components
 {
-    class Or : Node
+    class Or : Component
     {
+        public override Node getNewInitial()
+        {
+            return new Or();
+        }
     }
 }
