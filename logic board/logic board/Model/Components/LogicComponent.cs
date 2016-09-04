@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace logic_board.Model.Components
 {
-    abstract class Component : Node
+    abstract class LogicComponent : Node
     {
     }
 }

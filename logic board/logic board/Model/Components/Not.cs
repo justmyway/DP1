@@ -6,11 +6,15 @@ using System.Threading.Tasks;
 
 namespace logic_board.Model.Components
 {
-    class Not : Component
+    class Not : LogicComponent
     {
-        public override Node getNewInitial()
+        public override Node getNewInstance()
         {
             return new Not();
+        }
+
+        public Not() {
+            Value = Current.notSet;
         }
     }
 }

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace logic_board.Model.Components
 {
-    class Or : Component
+    class Or : LogicComponent
     {
-        public override Node getNewInitial()
+        public override Node getNewInstance()
         {
             return new Or();
         }

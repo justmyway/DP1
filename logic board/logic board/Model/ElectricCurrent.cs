@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace logic_board.Model
 {
-    class Input : Node
+    enum Current
     {
-        public override Node getNewInitial()
-        {
-            return new Input();
-        }
-    }
+        High,
+        Low,
+        notSet
+    };
 }

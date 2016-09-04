@@ -8,9 +8,13 @@ namespace logic_board.Model
 {
     class Probe : Node
     {
-        public override Node getNewInitial()
+        public override Node getNewInstance()
         {
-            return new Probe();
+            return new Probe(Value);
+        }
+
+        public Probe(Current startCurrent) {
+            Value = startCurrent;
         }
     }
 }
