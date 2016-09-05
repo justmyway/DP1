@@ -58,10 +58,12 @@
     <Compile Include="Model\Components\And.cs" />
     <Compile Include="Model\Components\LogicComponent.cs" />
     <Compile Include="Model\ElectricCurrent.cs" />
+    <Compile Include="Model\MultipleEntreeNode.cs" />
     <Compile Include="Model\Node.cs" />
     <Compile Include="Model\Components\Not.cs" />
     <Compile Include="Model\Components\Or.cs" />
     <Compile Include="Model\Probe.cs" />
+    <Compile Include="Model\SingleEntreeNode.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Application.resx">

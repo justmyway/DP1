@@ -8,9 +8,9 @@ namespace logic_board.Model
 {
     abstract class Node
     {
-        string _name;
-        List<Node> input = new List<Node>();
-        List<Node> output = new List<Node>();
+        private string _name;
+        protected List<Node> input = new List<Node>();
+        protected List<Node> output = new List<Node>();
 
         public Node()
         {
@@ -35,5 +35,10 @@ namespace logic_board.Model
         public Current Value { get; set; }
 
         public abstract Node getNewInstance();
+
+        public abstract void ConnectToPreviousNode(Node previousNode);
+        public void ConnectToNextNode(Node nextNode) {
+            output.Add(nextNode);
+        }
     }
 }

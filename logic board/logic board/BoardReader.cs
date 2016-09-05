@@ -13,8 +13,11 @@ namespace logic_board
     {
         private Dictionary<string, Node> components = new Dictionary<string, Node>();
         private List<Node> circuit;
-        private List<Node> inputProbes;
-        private List<Node> outputProbes;
+        private List<Node> _inputProbes;
+        private List<Node> _outputProbes;
+
+        public List<Node> InputProbes { get { return _inputProbes; } }
+        public List<Node> OutputProbes { get { return _outputProbes; } }
 
         public BoardReader()
         {
@@ -35,8 +38,8 @@ namespace logic_board
             Console.WriteLine("-- fase 1 --");
 
             circuit = new List<Node>();
-            inputProbes = new List<Node>();
-            outputProbes = new List<Node>();
+            _inputProbes = new List<Node>();
+            _outputProbes = new List<Node>();
             int fase = 1;
 
             using (StringReader sr = new StringReader(circuitDescription))
@@ -90,17 +93,23 @@ namespace logic_board
         private void readFase2(string line)
         {
             string[] componentsAndValues = sanitizeAndSplitLine(line);
-
-            Console.WriteLine("single line");
-            for (int i = 0; i < componentsAndValues.Length; i++)
-            {
-                Console.WriteLine(componentsAndValues[i]);
-            }
-
-
             foreach (Node component in circuit)
             {
-                //Console.WriteLine(component.Name);
+                if (component.Name.Equals(componentsAndValues[0]))
+                {
+                    string[] forwardNodes = splitConnectLine(componentsAndValues[1]);
+                    foreach (string connectNodeName in forwardNodes)
+                    {
+                        foreach (Node forwardNode in circuit)
+                        {
+                            if (forwardNode.Name.Equals(connectNodeName))
+                            {
+                                forwardNode.ConnectToPreviousNode(component);
+                                Console.WriteLine("Connected {0} to {1}", component.Name, forwardNode.Name);
+                            }
+                        }
+                    }
+                }
             }
         }
 
@@ -127,6 +136,11 @@ namespace logic_board
             line = line.Replace(tab.ToString(), "");
 
             return line.Trim(new char[] { ' ', '\t' }).Split(new char[] { ':', ';' }, 3, StringSplitOptions.RemoveEmptyEntries);
+        }
+
+        private string[] splitConnectLine(string connectLine)
+        {
+            return connectLine.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
         }
     }
 }

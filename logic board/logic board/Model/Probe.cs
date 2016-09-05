@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace logic_board.Model
 {
-    class Probe : Node
+    class Probe : SingleEntreeNode
     {
         public override Node getNewInstance()
         {

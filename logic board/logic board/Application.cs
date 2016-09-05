@@ -125,7 +125,13 @@ namespace logic_board
 
                 reader.read(textBoxBoardFormat.Text);
 
-                //circuit.generateNew(textBoxBoardFormat.Text);
+                addLogLine("--- verify renderd circuit ---");
+
+                circuit.setInputProbes(reader.InputProbes);
+                circuit.setOutputProbes(reader.OutputProbes);
+
+                //todo
+                //draw rendered circuit
             }
         }
     }

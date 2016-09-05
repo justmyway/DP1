@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace logic_board.Model.Components
 {
-    class And : LogicComponent
+    class And : MultipleEntreeNode
     {
         public override Node getNewInstance()
         {
