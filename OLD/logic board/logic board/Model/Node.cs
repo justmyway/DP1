@@ -32,6 +32,14 @@ namespace logic_board.Model
             }
         }
 
+        internal string[] Validate(string[] _errorLog)
+        {
+            foreach (Node nextNode in output) {
+
+            }
+            return _errorLog;
+        }
+
         public Current Value { get; set; }
 
         public abstract Node getNewInstance();

@@ -127,12 +127,29 @@ namespace logic_board
 
                 addLogLine("--- verify renderd circuit ---");
 
-                circuit.setInputProbes(reader.InputProbes);
-                circuit.setOutputProbes(reader.OutputProbes);
+                circuit.setInputProbes = reader.InputProbes;
+                circuit.setOutputProbes = reader.OutputProbes;
+
+                if (circuit.Verify())
+                {
+                    addLogLine("--- circuit verified ---");
+                    addLogLine("running beautifull!");
+                }
+                else
+                {
+                    string[] errors = circuit.ErrorLog();
+                    //errors.
+                    //addMultipleErrorLogLine();
+                }
 
                 //todo
                 //draw rendered circuit
             }
+        }
+
+        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
