@@ -29,5 +29,27 @@ namespace LogicBoard2._0.Logic
         public void AddRecipient(ILoggeble windowRecipient) {
             recipients.Add(windowRecipient);
         }
+
+        public void AddLogLine(string logLines)
+        {
+            AddLogLine(new string []{ logLines });
+        }
+
+        public void AddLogLine(string[] logLines)
+        {
+            foreach (ILoggeble recipient in recipients)
+                recipient.DisplayLogLine(logLines);
+        }
+
+        public void AddErrorLogLine(string logLines)
+        {
+            AddErrorLogLine(new string[] { logLines });
+        }
+
+        public void AddErrorLogLine(string[] logLines)
+        {
+            foreach (ILoggeble recipient in recipients)
+                recipient.DisplayErrorLogLine(logLines);
+        }
     }
 }

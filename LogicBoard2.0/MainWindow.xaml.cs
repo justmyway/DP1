@@ -1,4 +1,5 @@
 ﻿using LogicBoard2._0.Logic;
+using LogicBoard2._0.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -22,27 +23,32 @@ namespace LogicBoard2._0
     /// </summary>
     public partial class MainWindow : Window, ILoggeble
     {
+        private BoardReader boardReader;
+        private Circuit circuit;
+
         public MainWindow()
         {
             InitializeComponent();
             Log.Instance.AddRecipient(this);
+            boardReader = new BoardReader();
         }
 
-        public void DisplayErrorLogLine(string[] logLines)
+        public void DisplayLogLine(string[] logLines)
         {
             foreach(string newLogLine in logLines)
                 LogBookText.AppendText(Environment.NewLine + newLogLine);
 
             //LogBookText.SelectionStart = LogBookText.Text.Length;
             LogBookText.CaretIndex = LogBookText.Text.Length;
+            LogBookText.ScrollToEnd();
         }
 
-        public void DisplayLogLine(string[] logLines)
+        public void DisplayErrorLogLine(string[] logLines)
         {
             string[] errorLogLines = new string[logLines.Length+1];
             errorLogLines[0] = "A error occurred:";
             for (int i = 0; i < logLines.Length; i++) {
-                errorLogLines[i + 1] = String.Format("-> ", logLines[i]);
+                errorLogLines[i + 1] = String.Format("-> {0}", logLines[i]);
             }
 
             DisplayLogLine(errorLogLines);
@@ -62,6 +68,8 @@ namespace LogicBoard2._0
 
                 StreamReader readedFile = new StreamReader(File.OpenRead(fileDialog.FileName));
                 CircuitText.Text = readedFile.ReadToEnd();
+
+                Log.Instance.AddLogLine("File opened");
             }
         }
 
@@ -74,6 +82,14 @@ namespace LogicBoard2._0
             if (fileDialog.ShowDialog() == true) {
                 File.WriteAllText(fileDialog.FileName, CircuitText.Text);
             }
+        }
+
+        private void RunFile_Click(object sender, RoutedEventArgs e)
+        {
+            Log.Instance.AddLogLine("--- starting reading file ---");
+
+            circuit = boardReader.Compile(CircuitText.Text);
+
         }
     }
 }

@@ -63,14 +63,24 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Logic\BoardReader.cs" />
+    <Compile Include="Logic\PhaseReaders\BoardPhaseReader.cs" />
+    <Compile Include="Logic\PhaseReaders\IBoardPhaseReader.cs" />
     <Compile Include="Logic\ILoggeble.cs" />
     <Compile Include="Logic\Log.cs" />
+    <Compile Include="Logic\PhaseReaders\Phase1Reader.cs" />
+    <Compile Include="Logic\PhaseReaders\Phase2Reader.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Circuit.cs" />
+    <Compile Include="Models\Nodes\Components\Probe.cs" />
+    <Compile Include="Models\Nodes\ElectricCurrent.cs" />
+    <Compile Include="Models\Nodes\Node.cs" />
+    <Compile Include="Models\Nodes\SingleEntreeNode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -98,7 +108,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
     <Folder Include="ViewModels\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
