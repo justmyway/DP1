@@ -20,6 +20,11 @@ namespace LogicBoard2._0.Logic
 
         public Circuit Compile(string logicCircuit)
         {
+            if (logicCircuit.Length == 0) {
+                Log.Instance.AddErrorLogLine("No circuit found to render!");
+                return new Circuit();
+            }
+
             circuit = new Circuit();
             phaseReader.ReadNewCircuit();
 
@@ -32,6 +37,11 @@ namespace LogicBoard2._0.Logic
             }
 
             Log.Instance.AddLogLine("--- Circuit renderd success full ---");
+
+            if (circuit.Validate())
+            {
+                Log.Instance.AddLogLine("--- Circuit is valid and ready to run ---");
+            }
 
             return circuit;
         }

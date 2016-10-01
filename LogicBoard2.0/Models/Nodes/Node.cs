@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LogicBoard2._0.Visitors;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,9 @@ namespace LogicBoard2._0.Models.Nodes
         private string _name;
         protected List<Node> _inputs = new List<Node>();
         protected List<Node> _outputs = new List<Node>();
+
+        public List<Node> Inputs { get { return _inputs; } }
+        public List<Node> Outputs { get { return _outputs; } }
 
         public Current Value { get; set; }
 
@@ -31,5 +35,18 @@ namespace LogicBoard2._0.Models.Nodes
         }
 
         public abstract Node getNewInstance();
+
+        public abstract void Accept(Visitor visitor);
+
+        public void BindNextNode(Node nextNode)
+        {
+            _outputs.Add(nextNode);
+            nextNode.PreviousNode(this);
+        }
+
+        public void PreviousNode(Node previousNode)
+        {
+            _inputs.Add(previousNode);
+        }
     }
 }

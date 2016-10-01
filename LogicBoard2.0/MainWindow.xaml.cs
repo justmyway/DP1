@@ -90,6 +90,16 @@ namespace LogicBoard2._0
 
             circuit = boardReader.Compile(CircuitText.Text);
 
+            //hier komt het wel of niet todo met het valide bord ingelezen en wel, klaar voor gebruik of dus niet
+            if (circuit.Valid)
+            {
+                Console.WriteLine("bord is valide!!!");
+            }
+            else
+            {
+                Console.WriteLine("bord is niet valide!!!");
+            }
+
         }
     }
 }

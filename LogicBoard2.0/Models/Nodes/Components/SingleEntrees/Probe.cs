@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LogicBoard2._0.Visitors;
 
-namespace LogicBoard2._0.Models.Nodes.Components
+namespace LogicBoard2._0.Models.Nodes.Components.SingleEntrees
 {
     class Probe : SingleEntreeNode
     {
@@ -13,7 +14,12 @@ namespace LogicBoard2._0.Models.Nodes.Components
             return new Probe(Value);
         }
 
-        public Probe(Current startCurrent)
+        public override void Accept(Visitor visitor)
+        {
+            visitor.Visit(this);
+        }
+
+        public Probe(Current startCurrent = Current.notSet)
         {
             Value = startCurrent;
         }

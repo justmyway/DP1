@@ -55,6 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Visitors\NodeValidationVisitor.cs" />
+    <Compile Include="Visitors\NodeValidationVisitorHandler.cs" />
+    <Compile Include="Visitors\Visitor.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -77,9 +80,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Circuit.cs" />
-    <Compile Include="Models\Nodes\Components\Probe.cs" />
+    <Compile Include="Models\Nodes\Components\MultipleEntrees\And.cs" />
+    <Compile Include="Models\Nodes\Components\MultipleEntrees\Or.cs" />
+    <Compile Include="Models\Nodes\Components\SingleEntrees\Not.cs" />
+    <Compile Include="Models\Nodes\Components\SingleEntrees\Probe.cs" />
     <Compile Include="Models\Nodes\ElectricCurrent.cs" />
     <Compile Include="Models\Nodes\Node.cs" />
+    <Compile Include="Models\Nodes\MultipleEntreeNode.cs" />
     <Compile Include="Models\Nodes\SingleEntreeNode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

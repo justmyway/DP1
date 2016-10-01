@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using LogicBoard2._0.Models;
 using LogicBoard2._0.Models.Nodes;
-using LogicBoard2._0.Models.Nodes.Components;
+using LogicBoard2._0.Models.Nodes.Components.SingleEntrees;
+using LogicBoard2._0.Models.Nodes.Components.MultipleEntrees;
 
 namespace LogicBoard2._0.Logic.PhaseReaders
 {
@@ -18,11 +19,11 @@ namespace LogicBoard2._0.Logic.PhaseReaders
 
             nodes.Add("INPUT_HIGH", new Probe(Current.High));
             nodes.Add("INPUT_LOW", new Probe(Current.Low));
-            nodes.Add("PROBE", new Probe(Current.notSet));
+            nodes.Add("PROBE", new Probe());
 
-            //nodes.Add("NOT", new Not());
-            //nodes.Add("AND", new And());
-            //nodes.Add("OR", new Or());
+            nodes.Add("NOT", new Not());
+            nodes.Add("AND", new And());
+            nodes.Add("OR", new Or());
             //nodes.Add("NOr", new NOr());
             //nodes.Add("NAnd", new NAnd());
             //nodes.Add("XOr", new XOr());

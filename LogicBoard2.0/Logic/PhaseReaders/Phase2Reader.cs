@@ -22,11 +22,10 @@ namespace LogicBoard2._0.Logic.PhaseReaders
 
         public Circuit ReadLine(Circuit circuit, string[] circuitLine)
         {
-            //todo: write code to connect
-            Log.Instance.AddLogLine(circuitLine);
-
-
-
+            foreach(string nextNode in splitConnectLine(circuitLine[1]))
+            {
+                circuit.Connect(circuitLine[0], nextNode);
+            }
             return circuit;
         }
 
