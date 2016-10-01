@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -86,19 +87,26 @@ namespace LogicBoard2._0
 
         private void RunFile_Click(object sender, RoutedEventArgs e)
         {
-            Log.Instance.AddLogLine("--- starting reading file ---");
 
-            circuit = boardReader.Compile(CircuitText.Text);
+            RunFile.IsEnabled = false;
 
-            //hier komt het wel of niet todo met het valide bord ingelezen en wel, klaar voor gebruik of dus niet
-            if (circuit.Valid)
-            {
-                Console.WriteLine("bord is valide!!!");
-            }
-            else
-            {
-                Console.WriteLine("bord is niet valide!!!");
-            }
+            //new Thread(delegate() {
+                Log.Instance.AddLogLine("--- starting reading file ---");
+
+                circuit = boardReader.Compile(CircuitText.Text);
+
+                //hier komt het wel of niet todo met het valide bord ingelezen en wel, klaar voor gebruik of dus niet
+                if (circuit.Valid)
+                {
+                    Console.WriteLine("bord is valide!!!");
+                }
+                else
+                {
+                    Console.WriteLine("bord is niet valide!!!");
+                }
+            //});
+
+            RunFile.IsEnabled = true;
 
         }
     }

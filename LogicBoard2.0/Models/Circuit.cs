@@ -69,21 +69,33 @@ namespace LogicBoard2._0.Models
         public bool Validate()
         {
             NodeValidationVisitor visitor = new NodeValidationVisitor();
+            _valide = true;
 
-            foreach (Node startNode in _inputs) VisitAllNextNodes(startNode, visitor);
-
-            _valide = visitor.IsValid;
+            foreach (Node startNode in _inputs)
+            {
+                VisitAllNextNodes(startNode, visitor, new List<Node>());
+            }
+            
+            if (_valide) _valide = visitor.IsValid;
             _valideded = true;
             return _valide;  
         }
 
-        private void VisitAllNextNodes(Node node, NodeValidationVisitor visitor) {
+        private void VisitAllNextNodes(Node node, NodeValidationVisitor visitor, List<Node> visitedNodes) {
+            if (visitedNodes.Contains(node)) {
+                Log.Instance.AddErrorLogLine(string.Format("Infinite loop found, twice containing: {0}", node.Name));
+                _valide = false;
+                return;
+            }
             node.Accept(visitor);
 
-            if (!visitor.IsValid) return;
+            visitedNodes.Add(node);
+
+            if (!visitor.IsValid || !_valide) return;
 
             foreach (Node visitableNode in node.Outputs) {
-                VisitAllNextNodes(visitableNode, visitor);
+                VisitAllNextNodes(visitableNode, visitor, visitedNodes);
+                visitedNodes.Remove(visitableNode);
             }
         }
     }
