@@ -44,7 +44,7 @@ namespace LogicBoard2._0.Visitors
         private void CheckAmountInputNodes(Node node, int amount) {
             if (node.Inputs.Count != amount) {
                 _isValid = false;
-                Log.Instance.AddErrorLogLine(string.Format("{0} has {1} input nodes, there supposed to be {2}", node.Name, node.Inputs.Count.ToString(), amount.ToString()));
+                Log.Instance.AddErrorLogLine(string.Format("{0} has {1} input node, there supposed to be {2}", node.Name, node.Inputs.Count.ToString(), amount.ToString()));
             }
         }
 
@@ -53,7 +53,7 @@ namespace LogicBoard2._0.Visitors
             if (node.Outputs.Count != amount)
             {
                 _isValid = false;
-                Log.Instance.AddErrorLogLine(string.Format("{0} has {1} output nodes, there supposed to be {2}", node.Name, node.Outputs.Count.ToString(), amount.ToString()));
+                Log.Instance.AddErrorLogLine(string.Format("{0} has {1} output node, there supposed to be {2}", node.Name, node.Outputs.Count.ToString(), amount.ToString()));
             }
         }
 
