@@ -90,21 +90,21 @@ namespace LogicBoard2._0
 
             RunFile.IsEnabled = false;
 
-            //new Thread(delegate() {
-                Log.Instance.AddLogLine("--- starting reading file ---");
+            Log.Instance.AddLogLine("--- starting reading file ---");
 
-                circuit = boardReader.Compile(CircuitText.Text);
+            circuit = boardReader.Compile(CircuitText.Text);
 
-                //hier komt het wel of niet todo met het valide bord ingelezen en wel, klaar voor gebruik of dus niet
-                if (circuit.Valid)
-                {
-                    Console.WriteLine("bord is valide!!!");
-                }
-                else
-                {
-                    Console.WriteLine("bord is niet valide!!!");
-                }
-            //});
+            //hier komt het wel of niet todo met het valide bord ingelezen en wel, klaar voor gebruik of dus niet
+            if (circuit.Valid)
+            {
+                Console.WriteLine("bord is valide!!!");
+                
+                //scheme.Content = new Single
+            }
+            else
+            {
+                Console.WriteLine("bord is not valide!!!");
+            }
 
             RunFile.IsEnabled = true;
 
