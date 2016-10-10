@@ -26,6 +26,8 @@ namespace LogicBoard2._0.Models
         private bool _valide;
         private bool _valideded;
 
+        public List<Node> Inputs { get { return _inputs; } }
+
         public Circuit() {
             components = new List<Node>();
             _inputs = new List<Node>();

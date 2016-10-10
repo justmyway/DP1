@@ -1,10 +1,12 @@
 ﻿using LogicBoard2._0.Logic;
 using LogicBoard2._0.Models;
+using LogicBoard2._0.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -26,17 +28,19 @@ namespace LogicBoard2._0
     {
         private BoardReader boardReader;
         private Circuit circuit;
+        private CircuitDrawer _circuitDrawer;
 
         public MainWindow()
         {
             InitializeComponent();
             Log.Instance.AddRecipient(this);
             boardReader = new BoardReader();
+            _circuitDrawer = new CircuitDrawer();
         }
 
         public void DisplayLogLine(string[] logLines)
         {
-            foreach(string newLogLine in logLines)
+            foreach (string newLogLine in logLines)
                 LogBookText.AppendText(Environment.NewLine + newLogLine);
 
             //LogBookText.SelectionStart = LogBookText.Text.Length;
@@ -46,7 +50,7 @@ namespace LogicBoard2._0
 
         public void DisplayErrorLogLine(string[] logLines)
         {
-            string[] errorLogLines = new string[logLines.Length+1];
+            string[] errorLogLines = new string[logLines.Length + 1];
             errorLogLines[0] = "A error occurred:";
             for (int i = 0; i < logLines.Length; i++) {
                 errorLogLines[i + 1] = String.Format("-> {0}", logLines[i]);
@@ -98,16 +102,41 @@ namespace LogicBoard2._0
             if (circuit.Valid)
             {
                 Console.WriteLine("bord is valide!!!");
-                
-                //scheme.Content = new Single
+                RunCircuit.IsEnabled = true;
+
+                DrawCircuit();
             }
             else
             {
                 Console.WriteLine("bord is not valide!!!");
+                RunCircuit.IsEnabled = false;
             }
 
             RunFile.IsEnabled = true;
 
+        }
+
+        private void RunCircuit_Click(object sender, RoutedEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            if (!regex.IsMatch(Delay.Text))
+            {
+                Log.Instance.AddErrorLogLine("Delay is not a valid number");
+                return;
+            }
+
+            // run circuit
+            //circuit.Run(Delay.Text);
+
+            DrawCircuit();
+        }
+
+        private void DrawCircuit()
+        {
+            _circuitDrawer.SetCircuit(circuit);
+            _circuitDrawer.SetMedium(scheme);
+
+            _circuitDrawer.Draw();
         }
     }
 }

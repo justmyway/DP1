@@ -55,6 +55,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModels\CircuitDrawer.cs" />
+    <Compile Include="ViewModels\INodeView.cs" />
+    <Compile Include="ViewModels\MultipleNodeView.cs" />
+    <Compile Include="ViewModels\SingleNodeView.cs" />
     <Compile Include="Views\SingleNode.xaml.cs">
       <DependentUpon>SingleNode.xaml</DependentUpon>
     </Compile>
@@ -128,9 +132,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModels\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

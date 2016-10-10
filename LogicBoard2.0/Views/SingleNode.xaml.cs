@@ -20,7 +20,7 @@ namespace LogicBoard2._0.Views
     /// </summary>
     public partial class SingleNode : UserControl
     {
-        public Node()
+        public SingleNode()
         {
             InitializeComponent();
         }

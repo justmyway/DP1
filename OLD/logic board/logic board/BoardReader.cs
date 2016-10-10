@@ -119,11 +119,11 @@ namespace logic_board
             {
                 if (createdNode.Value == Current.notSet)
                 {
-                    outputProbes.Add(createdNode);
+                    _outputProbes.Add(createdNode);
                 }
                 else
                 {
-                    inputProbes.Add(createdNode);
+                    _inputProbes.Add(createdNode);
                 }
             }
 
