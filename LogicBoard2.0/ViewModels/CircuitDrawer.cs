@@ -71,8 +71,10 @@ namespace LogicBoard2._0.ViewModels
             }
 
             int addedWidth = 0;
+            height++;
+            SetMediumHeight(height);
             foreach (Node nextNode in drawNode.Outputs) {
-                height = height + 1;
+                SetMediumWidth(addedWidth);
                 PrepareNode(nextNode, width + addedWidth, height);
                 addedWidth++;
             }
@@ -82,6 +84,15 @@ namespace LogicBoard2._0.ViewModels
             foreach (INodeView drawable in _iViewDrawables) {
                 drawable.Draw(_canvas);
             }
+        }
+
+        private void SetMediumHeight(int rows) {
+            if (_canvas.Height < rows * _y) _canvas.Height = (rows * _y);
+        }
+
+        private void SetMediumWidth(int columns)
+        {
+            if (_canvas.Height < columns * _x) _canvas.Width = (columns * _x);
         }
     }
 }
