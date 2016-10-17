@@ -125,10 +125,17 @@ namespace LogicBoard2._0
                 return;
             }
 
-            // run circuit
-            //circuit.Run(Delay.Text);
+            int delay;
+            if (Int32.TryParse(Delay.Text, out delay))
+            {
+                circuit.Run(delay);
 
-            DrawCircuit();
+                DrawCircuit();
+            }
+            else {
+                Log.Instance.AddErrorLogLine("Delay is not a valid number");
+                return;
+            }
         }
 
         private void DrawCircuit()

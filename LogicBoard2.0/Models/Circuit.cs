@@ -25,6 +25,7 @@ namespace LogicBoard2._0.Models
         }
         private bool _valide;
         private bool _valideded;
+        private int _runTimeDelay;
 
         public List<Node> Inputs { get { return _inputs; } }
 
@@ -98,6 +99,17 @@ namespace LogicBoard2._0.Models
             foreach (Node visitableNode in node.Outputs) {
                 VisitAllNextNodes(visitableNode, visitor, visitedNodes);
                 visitedNodes.Remove(visitableNode);
+            }
+        }
+
+        public void Run(int delay)
+        {
+            _runTimeDelay = delay;
+
+            NodeRuntimeVisitor visitor = new NodeRuntimeVisitor();
+            foreach (Node startNode in _inputs)
+            {
+                //VisitAllNextNodes(startNode, visitor, new List<Node>());
             }
         }
     }
