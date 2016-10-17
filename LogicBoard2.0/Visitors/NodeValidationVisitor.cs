@@ -29,7 +29,7 @@ namespace LogicBoard2._0.Visitors
 
         public override void Visit(Probe probe)
         {
-            if (probe.Value == Current.notSet)
+            if (probe.Value == Current.NotSet)
             {
                 CheckAmountInputNodes(probe, 1);
                 CheckAmountOutputNodes(probe, 0);

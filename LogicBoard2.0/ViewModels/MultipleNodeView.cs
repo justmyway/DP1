@@ -13,6 +13,8 @@ namespace LogicBoard2._0.ViewModels
 {
     class MultipleNodeView : INodeView
     {
+        int called = -1;
+
         public MultipleNodeView(int x, int y) : base(x, y)
         {
         }
@@ -62,6 +64,17 @@ namespace LogicBoard2._0.ViewModels
             elip.Height = 30;
             elip.Margin = new Thickness(basePoint.X + 45, basePoint.Y, 0, 0);
             e.Children.Add(elip);
+        }
+
+        public override bool CallAmount() { return called < 1; }
+
+        public override Point GetInputNode() {
+            if (called == 1) return new Point();
+            called = called + 1;
+            Point p = new Point();
+            p.X = basePoint.X + 20 + (40 * called);
+            p.Y = basePoint.Y + 15;
+            return p;
         }
     }
 }

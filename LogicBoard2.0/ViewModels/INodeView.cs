@@ -16,15 +16,34 @@ namespace LogicBoard2._0.ViewModels
         protected Point basePoint { get; set; }
         protected Node baseNode { get; set; }
 
-        public INodeView(int x, int y) {
+        public INodeView(int x, int y)
+        {
             basePoint = new Point(x, y);
         }
 
-        public void SetNode(Node node) {
+        public void SetNode(Node node)
+        {
             baseNode = node;
         }
 
+        public  Node GetNode()
+        {
+            return baseNode;
+        }
+
+        public Point GetOutputProbe()
+        {
+            Point p = new Point();
+            p.X = basePoint.X + 40;
+            p.Y = basePoint.Y + 112;
+            return p;
+        }
+
         abstract public void Draw(Canvas e);
+
+        abstract public Point GetInputNode();
+
+        abstract public bool CallAmount();
 
         public void DrawBase(Canvas e) {
             //box

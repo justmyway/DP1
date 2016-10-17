@@ -58,6 +58,7 @@
     <Compile Include="ViewModels\CircuitDrawer.cs" />
     <Compile Include="ViewModels\INodeView.cs" />
     <Compile Include="ViewModels\MultipleNodeView.cs" />
+    <Compile Include="ViewModels\PositionCounter.cs" />
     <Compile Include="ViewModels\SingleNodeView.cs" />
     <Compile Include="Views\SingleNode.xaml.cs">
       <DependentUpon>SingleNode.xaml</DependentUpon>

@@ -40,7 +40,7 @@ namespace LogicBoard2._0.Models
             components.Add(newNode);
             if (newNode.GetType() == typeof(Probe))
             {
-                if (newNode.Value == Current.notSet)
+                if (newNode.Value == Current.NotSet)
                 {
                     _outputs.Add(newNode);
                 }

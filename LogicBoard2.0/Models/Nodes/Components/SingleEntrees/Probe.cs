@@ -19,7 +19,7 @@ namespace LogicBoard2._0.Models.Nodes.Components.SingleEntrees
             visitor.Visit(this);
         }
 
-        public Probe(Current startCurrent = Current.notSet)
+        public Probe(Current startCurrent = Current.NotSet)
         {
             Value = startCurrent;
         }

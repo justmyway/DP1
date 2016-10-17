@@ -133,6 +133,7 @@ namespace LogicBoard2._0
 
         private void DrawCircuit()
         {
+            scheme.Children.Clear();
             _circuitDrawer.SetCircuit(circuit);
             _circuitDrawer.SetMedium(scheme);
 
