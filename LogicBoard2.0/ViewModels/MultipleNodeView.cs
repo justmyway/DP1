@@ -17,7 +17,7 @@ namespace LogicBoard2._0.ViewModels
         {
         }
 
-        public void Draw(Canvas e)
+        public override void Draw(Canvas e)
         {
             base.DrawBase(e);
 
@@ -39,7 +39,7 @@ namespace LogicBoard2._0.ViewModels
             elip.Stroke = Brushes.LightCyan;
             elip.Width = 30;
             elip.Height = 30;
-            elip.Margin = new Thickness(basePoint.X + 10, basePoint.Y, 0, 0);
+            elip.Margin = new Thickness(basePoint.X + 5, basePoint.Y, 0, 0);
             e.Children.Add(elip);
 
             //input
@@ -60,7 +60,7 @@ namespace LogicBoard2._0.ViewModels
             elip.Stroke = Brushes.LightCyan;
             elip.Width = 30;
             elip.Height = 30;
-            elip.Margin = new Thickness(basePoint.X + 50, basePoint.Y, 0, 0);
+            elip.Margin = new Thickness(basePoint.X + 45, basePoint.Y, 0, 0);
             e.Children.Add(elip);
         }
     }

@@ -12,8 +12,8 @@
             <RowDefinition Height="5" />
             <RowDefinition Height="200" />
         </Grid.RowDefinitions>
-        <ScrollViewer Grid.Row="0" Margin="5" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-            <Canvas x:Name="scheme" Background="WhiteSmoke">
+        <ScrollViewer Grid.Row="0" Margin="5" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible">
+            <Canvas x:Name="scheme" Background="WhiteSmoke" Height="441" Width="1164">
 
             </Canvas>
         </ScrollViewer>

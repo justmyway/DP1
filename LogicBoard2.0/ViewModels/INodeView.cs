@@ -24,6 +24,8 @@ namespace LogicBoard2._0.ViewModels
             baseNode = node;
         }
 
+        abstract public void Draw(Canvas e);
+
         public void DrawBase(Canvas e) {
             //box
             Rectangle rect = new Rectangle();
@@ -43,8 +45,24 @@ namespace LogicBoard2._0.ViewModels
             rect.Stroke = Brushes.LightCyan;
             rect.Width = 80;
             rect.Height = 80;
-            rect.Margin = new Thickness(basePoint.X, basePoint.Y + 25, 0, 0);
+            rect.Margin = new Thickness(basePoint.X, basePoint.Y + 30, 0, 0);
             e.Children.Add(rect);
+
+            //Name
+            TextBox textBlock = new TextBox();
+            textBlock.Text = baseNode.Name;
+            textBlock.Foreground = Brushes.Black;
+            Canvas.SetLeft(textBlock, basePoint.X + 5);
+            Canvas.SetTop(textBlock, basePoint.Y + 50);
+            e.Children.Add(textBlock);
+
+            //Sort
+            textBlock = new TextBox();
+            textBlock.Text = baseNode.GetType().Name;
+            textBlock.Foreground = Brushes.Black;
+            Canvas.SetLeft(textBlock, basePoint.X + 5);
+            Canvas.SetTop(textBlock, basePoint.Y + 70);
+            e.Children.Add(textBlock);
 
             //output
             Ellipse elip = new Ellipse();
@@ -64,7 +82,7 @@ namespace LogicBoard2._0.ViewModels
             elip.Stroke = Brushes.LightCyan;
             elip.Width = 30;
             elip.Height = 30;
-            elip.Margin = new Thickness(basePoint.X+40, basePoint.Y+125, 0, 0);
+            elip.Margin = new Thickness(basePoint.X+25, basePoint.Y+110, 0, 0);
             e.Children.Add(elip);
         }
     }

@@ -42,7 +42,7 @@ namespace LogicBoard2._0.ViewModels
                 int width = 0;
                 foreach (Node drawNode in _circuit.Inputs)
                 {
-                    PrepareNode(drawNode, width, 1);
+                    PrepareNode(drawNode, width, 0);
                     width++;
                 }
             }
@@ -71,16 +71,28 @@ namespace LogicBoard2._0.ViewModels
             }
 
             int addedWidth = 0;
+            height++;
+            SetMediumHeight(height);
             foreach (Node nextNode in drawNode.Outputs) {
-                PrepareNode(nextNode, width + addedWidth, height++);
+                SetMediumWidth(addedWidth);
+                PrepareNode(nextNode, width + addedWidth, height);
                 addedWidth++;
             }
         }
 
         private void DrawNodes() {
             foreach (INodeView drawable in _iViewDrawables) {
-                drawable.DrawBase(_canvas);
+                drawable.Draw(_canvas);
             }
+        }
+
+        private void SetMediumHeight(int rows) {
+            if (_canvas.Height < rows * _y) _canvas.Height = (rows * _y);
+        }
+
+        private void SetMediumWidth(int columns)
+        {
+            if (_canvas.Height < columns * _x) _canvas.Width = (columns * _x);
         }
     }
 }
