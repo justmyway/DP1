@@ -35,6 +35,10 @@ namespace LogicBoard2._0.ViewModels
             {
                 rect.Fill = Brushes.OrangeRed;
             }
+            else
+            {
+                rect.Fill = Brushes.CadetBlue;
+            }
             rect.StrokeThickness = 2;
             rect.Stroke = Brushes.LightCyan;
             rect.Width = 80;
@@ -51,6 +55,10 @@ namespace LogicBoard2._0.ViewModels
             else if (baseNode.Value == Current.Low)
             {
                 elip.Fill = Brushes.OrangeRed;
+            }
+            else
+            {
+                elip.Fill = Brushes.CadetBlue;
             }
             elip.StrokeThickness = 2;
             elip.Stroke = Brushes.LightCyan;
