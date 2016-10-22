@@ -24,9 +24,9 @@ namespace LogicBoard2._0.Logic.PhaseReaders
             nodes.Add("NOT", new Not());
             nodes.Add("AND", new And());
             nodes.Add("OR", new Or());
-            //nodes.Add("NOr", new NOr());
-            //nodes.Add("NAnd", new NAnd());
-            //nodes.Add("XOr", new XOr());
+            nodes.Add("NOr", new Nor());
+            nodes.Add("NAnd", new Nand());
+            nodes.Add("XOr", new Xor());
         }
 
         public IBoardPhaseReader NextPhase()

@@ -36,7 +36,7 @@ namespace LogicBoard2._0.Models.Nodes
 
         public abstract Node getNewInstance();
 
-        public abstract void Accept(Visitor visitor);
+        public abstract bool Accept(Visitor visitor);
 
         public void BindNextNode(Node nextNode)
         {

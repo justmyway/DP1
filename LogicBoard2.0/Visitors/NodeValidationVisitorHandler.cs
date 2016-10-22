@@ -11,19 +11,34 @@ namespace LogicBoard2._0.Visitors
 {
     abstract class NodeValidationVisitorHandler : Visitor
     {
-        public override void Visit(And and)
+        public override bool Visit(And and)
         {
-            this.VisitMultiple(and);
+            return this.VisitMultiple(and);
         }
 
-        public override void Visit(Not not)
+        public override bool Visit(Nand nand)
         {
-            this.VisitSingle(not);
+            return this.VisitMultiple(nand);
         }
 
-        public override void Visit(Or or)
+        public override bool Visit(Not not)
         {
-            this.VisitMultiple(or);
+            return this.VisitSingle(not);
+        }
+
+        public override bool Visit(Or or)
+        {
+            return this.VisitMultiple(or);
+        }
+
+        public override bool Visit(Nor nor)
+        {
+            return this.VisitMultiple(nor);
+        }
+
+        public override bool Visit(Xor xor)
+        {
+            return this.VisitMultiple(xor);
         }
     }
 }

@@ -9,9 +9,9 @@ namespace LogicBoard2._0.Models.Nodes.Components.MultipleEntrees
 {
     class And : MultipleEntreeNode
     {
-        public override void Accept(Visitor visitor)
+        public override bool Accept(Visitor visitor)
         {
-            visitor.Visit(this);
+            return visitor.Visit(this);
         }
 
         public override Node getNewInstance()

@@ -26,7 +26,7 @@
             </Grid.ColumnDefinitions>
             <TextBox x:Name="CircuitText" Grid.Column="0" Height="190" Margin="5" VerticalScrollBarVisibility="Visible" />
             
-            <Rectangle Grid.Column="1" Margin="5" Width="281"/>
+            <Rectangle Grid.Column="1" Margin="10,0,0,10" Width="281"/>
             <Label x:Name="FileName" Content="Geen bestand geselecteerd" Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
             <Button x:Name="OpenFile" Content="Open file" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Grid.Column="1" Margin="10,41,0,0" Click="OpenFile_Click"/>
             <Button x:Name="SaveFile" Content="Save file" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Grid.Column="1" Margin="10,71,0,0" Click="SaveFile_Click"/>
@@ -38,6 +38,8 @@
             <Label Content="Delay" Grid.Column="1" HorizontalAlignment="Left" Margin="10,161,0,0" VerticalAlignment="Top"/>
             <TextBox x:Name="Delay" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="90,165,0,0" TextWrapping="Wrap" Text="10" VerticalAlignment="Top" Width="74" TextAlignment="Center"/>
             <Label Content="Miliseconds" Grid.Column="1" HorizontalAlignment="Left" Margin="169,161,0,0" VerticalAlignment="Top"/>
+            <Label Content="Total runtime:" Grid.Column="1" HorizontalAlignment="Left" Margin="159,43,0,0" VerticalAlignment="Top" Width="82" HorizontalContentAlignment="Center"/>
+            <Label x:Name="Runtime" Content="---" Grid.Column="1" HorizontalAlignment="Left" Margin="159,71,0,0" VerticalAlignment="Top" Width="82" HorizontalContentAlignment="Center"/>
         </Grid>
     </Grid>
 </Window>

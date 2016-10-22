@@ -26,6 +26,7 @@ namespace LogicBoard2._0.Models
         private bool _valide;
         private bool _valideded;
         private int _runTimeDelay;
+        private bool _useRuntimeDelay = true;
 
         public List<Node> Inputs { get { return _inputs; } }
 
@@ -102,15 +103,46 @@ namespace LogicBoard2._0.Models
             }
         }
 
-        public void Run(int delay)
+        public int Run(int delay, Action linePassed)
         {
             _runTimeDelay = delay;
+            int cycles = 0;
 
             NodeRuntimeVisitor visitor = new NodeRuntimeVisitor();
-            foreach (Node startNode in _inputs)
+            List<Node> nextRoundVisitNodes = new List<Node>();
+            nextRoundVisitNodes = _inputs;
+
+            while (nextRoundVisitNodes.Count > 0)
             {
-                //VisitAllNextNodes(startNode, visitor, new List<Node>());
+                nextRoundVisitNodes = VisitNextNodes(nextRoundVisitNodes, visitor);
+
+                if (_useRuntimeDelay) System.Threading.Thread.Sleep(delay);
+
+                cycles++;
+                linePassed();
             }
+
+            foreach (Node endNodes in _outputs) {
+                Log.Instance.AddLogLine(string.Format("Probe {0}, is {1}", endNodes.Name, endNodes.Value.ToString()));
+            }
+
+            return (delay * (cycles-1));
+        }
+
+        private List<Node> VisitNextNodes(List<Node> startNodes, NodeRuntimeVisitor visitor)
+        {
+            List<Node> nextNodes = new List<Node>();
+
+            foreach (Node node in startNodes) {
+                //ready checken
+                if (!node.Accept(visitor)) {
+                    nextNodes.Add(node);
+                }
+
+                nextNodes.AddRange(node.Outputs);
+            }
+
+            return nextNodes;
         }
     }
 }

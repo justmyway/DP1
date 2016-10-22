@@ -15,19 +15,21 @@ namespace LogicBoard2._0.Visitors
         private bool _isValid = true;
         public bool IsValid { get { return _isValid; } }
 
-        public override void VisitSingle(SingleEntreeNode singlenode)
+        public override bool VisitSingle(SingleEntreeNode singlenode)
         {
             CheckAmountInputNodes(singlenode, 1);
             CheckAmountOutputNodesNotNull(singlenode);
+            return true;
         }
 
-        public override void VisitMultiple(MultipleEntreeNode multipeNode)
+        public override bool VisitMultiple(MultipleEntreeNode multipeNode)
         {
             CheckAmountInputNodes(multipeNode, 2);
             CheckAmountOutputNodesNotNull(multipeNode);
+            return true;
         }
 
-        public override void Visit(Probe probe)
+        public override bool Visit(Probe probe)
         {
             if (probe.Value == Current.NotSet)
             {
@@ -39,6 +41,7 @@ namespace LogicBoard2._0.Visitors
                 CheckAmountInputNodes(probe, 0);
                 CheckAmountOutputNodesNotNull(probe);
             }
+            return true;
         }
 
         private void CheckAmountInputNodes(Node node, int amount) {

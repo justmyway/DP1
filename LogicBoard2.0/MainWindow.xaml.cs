@@ -118,7 +118,7 @@ namespace LogicBoard2._0
 
         private void RunCircuit_Click(object sender, RoutedEventArgs e)
         {
-            Regex regex = new Regex("[^0-9]+");
+            Regex regex = new Regex("^[0-9]+");
             if (!regex.IsMatch(Delay.Text))
             {
                 Log.Instance.AddErrorLogLine("Delay is not a valid number");
@@ -128,9 +128,10 @@ namespace LogicBoard2._0
             int delay;
             if (Int32.TryParse(Delay.Text, out delay))
             {
-                circuit.Run(delay);
-
-                DrawCircuit();
+                Log.Instance.AddLogLine("--- Start running circuit ---");
+                int runTimeNanoSecond = circuit.Run(delay, DrawCircuit);
+                Log.Instance.AddLogLine(string.Format("--- Circuit ran in {0} miliseconds ---", runTimeNanoSecond.ToString()));
+                Runtime.Content = runTimeNanoSecond.ToString();
             }
             else {
                 Log.Instance.AddErrorLogLine("Delay is not a valid number");

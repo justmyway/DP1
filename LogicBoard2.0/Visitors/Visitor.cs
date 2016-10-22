@@ -11,11 +11,14 @@ namespace LogicBoard2._0.Visitors
 {
     abstract class Visitor
     {
-        public abstract void VisitSingle(SingleEntreeNode singleEntreeNode);
-        public abstract void VisitMultiple(MultipleEntreeNode multipleEntreeNode);
-        public abstract void Visit(And or);
-        public abstract void Visit(Or or);
-        public abstract void Visit(Not not);
-        public abstract void Visit(Probe probe);
+        public abstract bool VisitSingle(SingleEntreeNode singleEntreeNode);
+        public abstract bool VisitMultiple(MultipleEntreeNode multipleEntreeNode);
+        public abstract bool Visit(And and);
+        public abstract bool Visit(Nand nand);
+        public abstract bool Visit(Or or);
+        public abstract bool Visit(Nor nor);
+        public abstract bool Visit(Xor xor);
+        public abstract bool Visit(Not not);
+        public abstract bool Visit(Probe probe);
     }
 }

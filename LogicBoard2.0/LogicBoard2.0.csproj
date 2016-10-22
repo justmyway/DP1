@@ -55,6 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\Nodes\Components\MultipleEntrees\Nand.cs" />
+    <Compile Include="Models\Nodes\Components\MultipleEntrees\Xor.cs" />
+    <Compile Include="Models\Nodes\Components\MultipleEntrees\Nor.cs" />
     <Compile Include="ViewModels\CircuitDrawer.cs" />
     <Compile Include="ViewModels\INodeView.cs" />
     <Compile Include="ViewModels\MultipleNodeView.cs" />

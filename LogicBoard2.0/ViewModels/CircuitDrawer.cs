@@ -41,6 +41,8 @@ namespace LogicBoard2._0.ViewModels
         {
             _canvas = scheme;
             _drawnNodes.Clear();
+            _iViewDrawables.Clear();
+            _beginProbe = new Point();
         }
 
         public void Draw()

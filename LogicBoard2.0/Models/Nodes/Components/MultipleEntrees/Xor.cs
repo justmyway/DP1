@@ -7,7 +7,7 @@ using LogicBoard2._0.Visitors;
 
 namespace LogicBoard2._0.Models.Nodes.Components.MultipleEntrees
 {
-    class Or : MultipleEntreeNode
+    class Xor : MultipleEntreeNode
     {
         public override bool Accept(Visitor visitor)
         {
@@ -16,7 +16,7 @@ namespace LogicBoard2._0.Models.Nodes.Components.MultipleEntrees
 
         public override Node getNewInstance()
         {
-            return new Or();
+            return new Xor();
         }
     }
 }
